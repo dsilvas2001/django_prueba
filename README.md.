@@ -1,0 +1,34 @@
+Nombre: Donald Silva
+Github:  https://github.com/dsilvas2001/django_prueba.git
+
+Examen Práctico
+Desarrollar e integrar una aplicación Django desplegada en AWS (Lightsail o Elastic Beanstalk) con una función Lambda que utilice un modelo de clasificación de imágenes para determinar el tipo de imagen cargada por el usuario. La descripción será almacenada automáticamente en la base de datos a través de la API del backend.
+Parte 1: Backend con Django (4 puntos)
+•	Crear una aplicación Django llamada catálogo.
+
+
+ 
+•	Definir el modelo Imagen(nombre, tipo_detectado, descripcion, archivo).
+ 
+
+
+
+
+•	Habilitar un CRUD desde Django Admin o vía API REST
+
+LOCAL
+ 
+•	Desplegar la app en Lightsail o Elastic Beanstalk.
+ 
+ 
+Parte 2: Función Lambda con Clasificación de Imágenes (4 puntos)
+•	Crear una función Lambda que:
+•	Reciba una imagen vía base64 o desde S3.
+ 
+•	Use un modelo simple para detectar si la imagen es de tipo "Documento", "Foto", "Factura", etc.
+ 
+ 
+•	Devuelva el tipo detectado y una breve descripción.
+
+•	La función Lambda deberá invocar una API del backend Django para guardar los resultados (tipo_detectado y descripción) junto con el nombre del archivo.
+
