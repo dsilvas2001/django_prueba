@@ -1,54 +1,42 @@
-Sistema de Clasificación de Imágenes - Resumen Ejecutivo
-📌 Objetivo
-Sistema automático que clasifica imágenes subidas por usuarios en categorías como "Documento", "Foto" o "Factura", almacenando los resultados en una base de datos mediante una arquitectura serverless en AWS.
+# Sistema de Clasificación de Imágenes
 
-🛠️ Componentes Clave
-Backend Django (4 puntos)
-Aplicación "catalogo" con modelo Imagen que incluye:
+## Parte 1: Backend con Django (4 puntos)
 
-Nombre del archivo
+### Aplicación Catalogo
+- Aplicación Django llamada "catalogo" creada
+- Configuración básica completada
 
-Tipo detectado (Documento/Foto/Factura)
+### Modelo Imagen
+- Modelo implementado con los campos:
+  - nombre (CharField)
+  - tipo_detectado (CharField)
+  - descripcion (TextField)
+  - archivo (FileField)
 
-Descripción generada
+### Acceso a Datos
+- CRUD habilitado mediante:
+  - Interfaz de administración Django
+  - API REST básica
 
-Archivo almacenado
+### Despliegue
+- Configuración lista para:
+  - AWS Lightsail
 
-API REST completa con operaciones CRUD
+## Parte 2: Función Lambda (4 puntos)
 
-Panel de administración Django integrado
+### Entrada de Datos
+- Recibe imágenes mediante:
+  - Carga directa en base64
+  - Trigger desde S3
 
-Desplegado en AWS Lightsail/Elastic Beanstalk
+### Clasificación
+- Implementa detección básica de:
+  - Documentos
+  - Fotos  
+  - Facturas
+  - Otros tipos
 
-Función Lambda (4 puntos)
-Recibe imágenes desde S3 o en formato base64
-
-Clasifica automáticamente usando:
-
-Análisis de cabeceras de archivo
-
-Modelo simple de detección
-
-Devuelve:
-
-Tipo detectado (ej: "Factura")
-
-Descripción breve (ej: "Documento PDF de 2 páginas")
-
-🔄 Flujo del Sistema
-Usuario sube imagen → Bucket S3
-
-Lambda se activa → Clasifica imagen
-
-Resultados enviados → API Django
-
-Datos almacenados → Base de datos
-
-Disponibles en Admin y API REST
-
-✅ Estado Actual
-Backend Django completo con API funcional
-
-Función Lambda básica implementada
-
-Integración inicial S3-Lambda-Django
+### Salida
+- Devuelve objeto con:
+  - tipo_detectado (string)
+  - descripcion (string)
